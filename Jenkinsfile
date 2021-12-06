@@ -27,7 +27,7 @@ pipeline {
 
   }
   environment {
-    DOCKERHUB_CREDENTIALS = credentials('schhim')
+    DOCKERHUB_CREDENTIALS = credentials('Docker')
   }
   post {
     always {
