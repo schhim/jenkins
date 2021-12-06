@@ -9,7 +9,7 @@ pipeline {
 
     stage('Login') {
       steps {
-        sh 'docker login schhim'
+        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
       }
     }
 
@@ -27,7 +27,7 @@ pipeline {
 
   }
   environment {
-    DOCKERHUB_CREDENTIALS = credentials('Docker')
+    DOCKERHUB_CREDENTIALS = ''
   }
   post {
     always {
