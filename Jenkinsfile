@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Build image') {
       steps {
-        sh 'dockerImage = docker.build registry + ":$BUILD_NUMBER" .'
+        sh 'docker build -t schhim/jenkins:latest .'
       }
     }
 
