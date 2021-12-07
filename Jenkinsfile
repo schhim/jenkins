@@ -14,8 +14,7 @@ pipeline {
 
     stage('Login') {
       steps {
-        sh 'docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()'
+        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
       }
     }
 
