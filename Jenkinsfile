@@ -9,7 +9,7 @@ pipeline {
 
     stage('Login') {
       steps {
-        sh 'echo $registryCredential| docker login -u schhim --password-stdin'
+        sh 'echo $registryCredential| docker login -u $user --password-stdin'
       }
     }
 
@@ -29,6 +29,7 @@ pipeline {
   environment {
     registry = "schhim/jenkins"
     registryCredential = 'docker-hub-credentials'
+    user='schhim'
       }
   post {
     always {
