@@ -27,7 +27,7 @@ pipeline {
 
   }
   environment {
-    DOCKERHUB_CREDENTIALS = 'docker'
+    DOCKERHUB_CREDENTIALS = "docker"
   }
   post {
     always {
