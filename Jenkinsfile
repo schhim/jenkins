@@ -1,4 +1,9 @@
 pipeline {
+  environment {
+    registry = "schhim/jenkins"
+    registryCredential = 'docker-hub-credentials'
+    dockerImage = ''
+      }
   agent any
   stages {
     stage('Build image') {
@@ -27,11 +32,7 @@ pipeline {
     }
 
   }
-  environment {
-    registry = "schhim/jenkins"
-    registryCredential = 'docker-hub-credentials'
-    dockerImage = ''
-      }
+  
   post {
     always {
       sh 'docker logout'
