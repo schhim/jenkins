@@ -13,7 +13,8 @@ pipeline {
 
     stage('Login') {
       steps {
-        sh 'echo "$registryCredential" | docker login --username schhim --password-stdin '
+        withCredentials{[[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker-hub-credentials', usernameVariable: 'USERNAME, passwordVariable: 'PASSWORD']]){
+        sh """echo uname=$USERNAME pwd=$PASSWORD | docker login -u uname -p pwd'
       }
     }
 
