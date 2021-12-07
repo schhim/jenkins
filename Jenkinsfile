@@ -17,6 +17,7 @@ pipeline {
         sh 'echo uname=$USERNAME pwd=$PASSWORD | docker login -u uname -p pwd'
       }
     }
+    }
 
     stage('push image') {
       steps {
