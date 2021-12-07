@@ -27,7 +27,8 @@ pipeline {
 
   }
   environment {
-    DOCKERHUB_CREDENTIALS='docker-hub-credentials'
+    registry = "schhim/jenkins"
+    registryCredential = 'docker-hub-credentials'
       }
   post {
     always {
