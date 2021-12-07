@@ -27,9 +27,8 @@ pipeline {
 
   }
   environment {
-    DOCKERHUB_CREDENTIALS='docker'
-    DOCKERHUB_CREDENTIALS_PSW='docker'
-  }
+    DOCKERHUB_CREDENTIALS='docker-hub-credentials'
+      }
   post {
     always {
       sh 'docker logout'
