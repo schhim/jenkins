@@ -1,33 +1,33 @@
 pipeline {
-  agent any
-  environment {
-      DOCKERHUB_CREDENTIALS=credentials('Docker')
-  }
-  stages {
-    stage('Build image') {
-      steps {
-        sh 'docker build -t schhim/jenkins:latest .'
-      }
+    agent any
+    environment {
+        DOCKERHUB_CREDENTIALS=credentials('Docker')
     }
-    stage('Login') {
-      steps {
-        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-      }
+    stages {
+        stage('Build image') {
+            steps {
+                sh 'docker build -t schhim/maven:latest .'
+            }
+        }
+        stage('Login') {
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+        stage('push image') {
+            steps {
+                sh 'docker push schhim/maven:latest'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'echo this step saved for kubernetes!!!'
+            }
+        }
     }
-    stage('push image') {
-      steps {
-        sh 'docker push schhim/jenkins:latest'
-      }
+    post {
+        always {
+            sh 'docker logout'
+        }
     }
-    stage('Deploy') {
-      steps {
-        sh 'echo this step saved for kubernetes'
-      }
-    }
-  }
-   post {
-    always {
-      sh 'docker logout'
-    }
-  }
 }
