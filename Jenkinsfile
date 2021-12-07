@@ -3,13 +3,14 @@ pipeline {
   stages {
     stage('Build image') {
       steps {
-        sh 'docker build -t schhim/jenkins:latest .'
+        sh 'dockerImage = docker.build registry + ":$BUILD_NUMBER" .'
       }
     }
 
     stage('Login') {
       steps {
-        sh 'echo $registryCredential| docker login -u $user -p $registryCredential'
+        sh 'docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()'
       }
     }
 
@@ -29,7 +30,7 @@ pipeline {
   environment {
     registry = "schhim/jenkins"
     registryCredential = 'docker-hub-credentials'
-    user='schhim'
+    dockerImage = ''
       }
   post {
     always {
