@@ -13,7 +13,7 @@ pipeline {
 
     stage('Login') {
       steps {
-        sh 'echo $registryCredential | docker login -u schhim -p $registryCredential'
+        sh 'docker login -u schhim -p $registryCredential'
       }
     }
 
