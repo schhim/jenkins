@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Build image') {
             steps {
-                sh 'docker build -t schhim/maven:latest .'
+                sh 'docker build -t schhim/jenkins:latest .'
             }
         }
         stage('Login') {
@@ -16,7 +16,7 @@ pipeline {
 		}
         stage('push image') {
             steps {
-                sh 'docker push schhim/maven:latest'
+                sh 'docker push schhim/jenkins:latest'
             }
         }
         stage('Deploy') {
