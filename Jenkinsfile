@@ -13,7 +13,7 @@ pipeline {
 
     stage('Login') {
       steps {
-        sh 'echo $registryCredential | docker login -u $registryCredential_USR --password-stdin'
+        sh 'echo $registryCredential | docker login -u schhim --password-stdin'
       }
     }
 
