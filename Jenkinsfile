@@ -27,7 +27,7 @@ pipeline {
 
   }
   environment {
-    DOCKERHUB_CREDENTIALS = '5a86c599-560f-415a-9415-3b95b0b4c97d'
+    DOCKERHUB_CREDENTIALS = 'docker'
   }
   post {
     always {
