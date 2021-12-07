@@ -14,7 +14,7 @@ pipeline {
     stage('Login') {
       steps {
         withCredentials{[[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker-hub-credentials', usernameVariable: 'USERNAME, passwordVariable: 'PASSWORD']]){
-        sh """echo uname=$USERNAME pwd=$PASSWORD | docker login -u uname -p pwd"""
+        sh 'echo uname=$USERNAME pwd=$PASSWORD | docker login -u uname -p pwd'
       }
     }
 
