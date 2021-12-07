@@ -27,8 +27,8 @@ pipeline {
 
   }
   environment {
-    DOCKERHUB_CREDENTIALS='Docker'
-    DOCKERHUB_CREDENTIALS_PSW='Docker'
+    DOCKERHUB_CREDENTIALS='docker'
+    DOCKERHUB_CREDENTIALS_PSW='docker'
   }
   post {
     always {
