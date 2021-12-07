@@ -17,7 +17,7 @@ pipeline {
           sh 'docker login -u ${env.docker-hub-credentialsUser} -p ${env.docker-hub-credentialsPassword}'
       }
     }
-
+    }
     stage('push image') {
       steps {
         sh 'docker push schhim/jenkins:latest'
@@ -36,6 +36,5 @@ pipeline {
     always {
       sh 'docker logout'
     }
-  }
-  }
+   }
 }
