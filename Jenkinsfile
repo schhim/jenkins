@@ -1,8 +1,4 @@
 pipeline {
-  environment {
-    registry = "schhim/jenkins"
-    registryCredential = 'docker-hub-credentials'
-          }
   agent any
   stages {
     stage('Build image') {
@@ -13,7 +9,7 @@ pipeline {
 
     stage('Login') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
           sh 'echo $PASSWORD | docker login -u $USERNAME --password-stdin'
       }
     }
