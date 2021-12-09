@@ -21,8 +21,11 @@ pipeline {
     }
 
     stage('Deploy') {
-      steps {
-        sh 'echo this step saved for kubernetes'
+      stage ('K8S Deploy') {
+            steps {
+                withKubeConfig([credentialsId: 'K8s']) {
+                    sh 'kubectl apply -f deployment.yaml'
+                    sh 'kubectl rollout restart deployment maven-app-deploy'
       }
     }
 
