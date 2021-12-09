@@ -28,13 +28,11 @@ pipeline {
                     sh 'kubectl rollout restart deployment maven-app-deploy'
       }
     }
-
+      }
   }
-  
   post {
     always {
       sh 'docker logout'
     }
    }
 }
-  }
