@@ -19,16 +19,14 @@ pipeline {
         sh 'docker push schhim/jenkins:latest'
       }
     }
-
-    stage('Deploy') {
-      stage ('K8S Deploy') {
-            steps {
-                withKubeConfig([credentialsId: 'K8s']) {
-                    sh 'kubectl apply -f deployment.yaml'
-                    sh 'kubectl rollout restart deployment maven-app-deploy'
+    stage ('K8S Deploy') {
+       steps {
+           withKubeConfig([credentialsId: 'K8']) {
+               sh 'kubectl apply -f deployment.yaml'
+               sh 'kubectl rollout restart deployment maven-app-deploy'
       }
     }
-      }
+   }
   }
   post {
     always {
