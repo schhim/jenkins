@@ -21,7 +21,7 @@ pipeline {
     }
     stage ('K8S Deploy') {
        steps {
-           withKubeConfig([credentialsId: 'K8']) {
+           withCredentials([credentialsId: 'K8']) {
                sh 'kubectl apply -f deployment.yaml'
                sh 'kubectl rollout restart deployment maven-app-deploy'
       }
