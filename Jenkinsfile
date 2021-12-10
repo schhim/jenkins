@@ -1,4 +1,7 @@
 pipeline {
+  environment {
+    AWS=credentials('AWS')
+  }
   agent any
   stages {
     stage('Build image') {
