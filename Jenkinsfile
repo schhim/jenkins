@@ -3,7 +3,15 @@ pipeline {
     AWS=credentials('AWS')
   }
   agent any
+  tools {
+    maven 'Maven'
+  }
   stages {
+    stage('Maven Build') {
+      steps {
+        sh 'mvn clean package install'
+      }
+    }
     stage('Build image') {
       steps {
         sh 'docker build -t schhim/jenkins:latest .'
